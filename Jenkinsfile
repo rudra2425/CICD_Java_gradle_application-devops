@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         DOCKERHUB_CREDENTIALS = credentials('dockerhub-credentials')
-        SONARQUBE_URL = 'http://100.27.230.115:9000'
+        SONARQUBE_URL = 'http://VM2-public-dns:9000'
         SONARQUBE_TOKEN = credentials('sonarqube-token')
     }
 
@@ -11,6 +11,12 @@ pipeline {
         stage('Checkout') {
             steps {
                 checkout scm
+            }
+        }
+
+        stage('Set Permissions') {
+            steps {
+                sh 'chmod +x gradlew'
             }
         }
 
@@ -31,7 +37,7 @@ pipeline {
         stage('Docker Build') {
             steps {
                 script {
-                    dockerImage = docker.build("your-dockerhub-chatla007/my-java-gradle-app:${env.BUILD_ID}")
+                    dockerImage = docker.build("chatla007/my-java-gradle-app:${env.BUILD_ID}")
                 }
             }
         }
