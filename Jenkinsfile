@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         DOCKERHUB_CREDENTIALS = credentials('dockerhub-credentials')
-        SONARQUBE_URL = 'http://VM2-public-dns:9000'
+        SONARQUBE_URL = 'http://100.27.230.115:9000'
         SONARQUBE_TOKEN = credentials('sonarqube-token')
     }
 
@@ -17,6 +17,13 @@ pipeline {
         stage('Set Permissions') {
             steps {
                 sh 'chmod +x gradlew'
+            }
+        }
+
+        stage('Set Java Version') {
+            steps {
+                sh 'export JAVA_HOME=/path/to/java17'
+                sh 'export PATH=$JAVA_HOME/bin:$PATH'
             }
         }
 
