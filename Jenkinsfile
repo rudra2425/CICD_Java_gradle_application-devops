@@ -3,11 +3,9 @@ pipeline {
 
     environment {
         // Define environment variables
-        SONARQUBE_URL = 'http://your-sonarqube-server'
-        SONARQUBE_TOKEN = credentials('sonarqube-token-id') // Replace with your SonarQube token ID
-        NEXUS_URL = 'http://your-nexus-server'
-        NEXUS_REPO = 'your-repo'
-        NEXUS_CRED = credentials('nexus-credentials-id') // Replace with your Nexus credentials ID
+        SONARQUBE_URL = 'http://54.160.179.28:9000'
+        SONARQUBE_TOKEN = credentials('sonar-token') // Replace with your SonarQube token ID
+        
     }
 
     stages {
@@ -15,7 +13,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 // Checkout code from the version control system
-                git 'https://github.com/your-repository-url.git'
+                git 'https://github.com/rudra2425/CICD_Java_gradle_application-devops.git'
             }
         }
 
