@@ -9,12 +9,11 @@ pipeline {
                 }
             }
             steps {
-                // Ensure Gradle Wrapper has execute permissions
-                sh 'chmod +x gradlew'
-
-                // Run SonarQube analysis
-                withSonarQubeEnv(credentialsId: 'sonar-token') {
-                    sh './gradlew sonarqube'
+                  script{
+                      withSonarQubeEnv(credentialsId: 'sonar-token') {
+                        sh 'chmod +x gradlew'
+                        sh './gradlew sonarqube'
+                    }
                 }
             }
         }
