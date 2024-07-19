@@ -5,9 +5,9 @@ pipeline {
         // Define environment variables
         SONARQUBE_URL = 'http://54.160.179.28:9000'
         SONARQUBE_TOKEN = credentials('sonar-token') // Replace with your SonarQube token ID
-        NEXUS_URL = 'http://your-nexus-server' // Replace with your Nexus URL
-        NEXUS_REPO = 'your-repo' // Replace with your Nexus repository
-        NEXUS_CRED = credentials('nexus-credentials-id') // Replace with your Nexus credentials ID
+        //NEXUS_URL = 'http://your-nexus-server' // Replace with your Nexus URL
+        //NEXUS_REPO = 'your-repo' // Replace with your Nexus repository
+        //NEXUS_CRED = credentials('nexus-credentials-id') // Replace with your Nexus credentials ID
     }
 
     stages {
