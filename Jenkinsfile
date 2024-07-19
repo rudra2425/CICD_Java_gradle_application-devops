@@ -31,7 +31,7 @@ pipeline {
         stage('Docker Build') {
             steps {
                 script {
-                    dockerImage = docker.build("your-dockerhub-chatla007/your-repo:${env.BUILD_ID}")
+                    dockerImage = docker.build("your-dockerhub-chatla007/my-java-gradle-app:${env.BUILD_ID}")
                 }
             }
         }
@@ -39,7 +39,7 @@ pipeline {
         stage('Trivy Scan') {
             steps {
                 script {
-                    sh 'trivy image --exit-code 1 --severity HIGH,CRITICAL your-dockerhub-username/your-repo:${env.BUILD_ID}'
+                    sh 'trivy image --exit-code 1 --severity HIGH,CRITICAL chatla007/my-java-gradle-app:${env.BUILD_ID}'
                 }
             }
         }
