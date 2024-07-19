@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         DOCKERHUB_CREDENTIALS = credentials('dockerhub-credentials')
-        SONARQUBE_URL = 'http://VM2-public-dns:9000'
+        SONARQUBE_URL = 'http://100.27.230.115:9000'
         SONARQUBE_TOKEN = credentials('sonarqube-token')
     }
 
