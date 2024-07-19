@@ -2,19 +2,19 @@ pipeline {
     agent any
 
     stages {
-        stage('sonar quality check') {
+        stage('SonarQube Quality Check') {
             agent {
                 docker {
                     image 'openjdk:11'
                 }
             }
             steps {
-                script{
-                    /* groovylint-disable-next-line NestedBlockDepth */
-                    withSonarQubeEnv(credentialsId: 'sonar-token') {
-                        sh 'chmod +x gradlew'
-                        sh './gradlew sonarqube'
-                    }
+                // Ensure Gradle Wrapper has execute permissions
+                sh 'chmod +x gradlew'
+
+                // Run SonarQube analysis
+                withSonarQubeEnv(credentialsId: 'sonar-token') {
+                    sh './gradlew sonarqube'
                 }
             }
         }
