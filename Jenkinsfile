@@ -31,7 +31,7 @@ pipeline {
         stage('Docker Build') {
             steps {
                 script {
-                    dockerImage = docker.build("your-dockerhub-username/your-repo:${env.BUILD_ID}")
+                    dockerImage = docker.build("your-dockerhub-chatla007/your-repo:${env.BUILD_ID}")
                 }
             }
         }
